@@ -1,0 +1,60 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+       
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css'%}" />
+        <script src="{% static 'modernizr.custom.63321.js'%}"></script>
+        <!--[if lte IE 7]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
+		<style>
+			body {
+				background: white
+			}
+		</style>
+    </head>
+    
+<body>
+<div class="container">
+		
+			
+			<header>
+			
+				<h1> <strong>Welcome {{ user.username }}</strong></h1>
+				<p><a href="/logout" class="button">Logout</a></p>
+				<p><a href="/home" class="button"><input type="button" name="submit" value="More Search"></a></p>
+				
+			 </header>
+			</hr>
+		
+			
+	<section class="main">
+	<div class="search-box">
+
+	<div class="clear"></div>
+	</div>
+	<ul class="search-list-container">
+		{% for finaldict in bannerdata %}
+	<li class="search-list-item">
+	<span class="list-image">
+	<img src="{{finaldict.image}}" alt="image" height="500" width="500">
+	
+	</span>
+	<h3><span class="list-name"></span>{{finaldict.name}} </span></br></h3>
+	<h1><span class="list-price"> {{finaldict.price}}</span></h1>
+	<span class="list-action">
+		<img src="{{finaldict.storeimage}}" alt="image" height="100" width="100" right="50">
+		<a class="btn-buy" href="{{finaldict.url}}" target="_blank">Buy Now</a>
+	</span>
+	<span class="clear"></span>
+	</li>
+	{% endfor %}
+
+	</ul>
+	</section>
+</div>
+	
+</body>
+</html>
